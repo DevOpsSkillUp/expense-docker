@@ -1,0 +1,11 @@
+FROM node:20
+EXPOSE 8080
+RUN useradd expense
+RUN mkdir /opt/server
+RUN chmod expense:expense -R /opt/server
+WORKDIR /opt/server
+COPY package.json .
+COPY *.js .
+RUN install npm
+CMD ["node","index.js"]
+
